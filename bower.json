@@ -1,0 +1,17 @@
+{
+  "name": "fileupload",
+  "description": "Sample M(ySQL)EAN app that allows the user to upload files.",
+  "main": "",
+  "authors": [
+    "Tammy Robinson <tammyprodev@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

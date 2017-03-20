@@ -1,0 +1,6 @@
+# workspace settings
+.idea
+
+# dependencies
+node_modules
+bower_components
