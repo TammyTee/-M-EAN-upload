@@ -1,0 +1,133 @@
+<main>
+    <section class="section" ng-controller="UploaderController as upl">
+        <div class="container">
+
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <div class="field">
+                        <label for="file" id="file-label" class="button">Choose A File</label>
+                        <p class="control">
+                            <input id="file" name="file" type="file" class="input-file" nv-file-select multiple uploader="upl.uploader"/>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column has-text-centered">
+                        <h3 class="title is-h3">Uploaded Files</h3>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <div class="panel">
+                        <p class="panel-tabs">
+                            <a class="is-active">Queue</a>
+                        </p>
+                        <p class="panel-block" ng-show="!upl.uploader.queue.length">
+                            <span class="center-element empty-list">No Items In Queue</span>
+                        </p>
+                        <p class="panel-block is-active" ng-repeat="item in upl.uploader.queue">
+                            <span ng-show="item.isSuccess"><i class="fa fa-check" aria-hidden="true"></i></span>
+                            <span ng-show="item.isCancel"><i class="fa fa-ban" aria-hidden="true"></i></span>
+                            <span ng-show="item.isError"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+                           {{ item.file.name }}
+                        </p>
+                        <div class="panel-block">
+                            <button class="button is-primary is-outlined is-fullwidth" ng-disabled="!upl.uploader.getNotUploadedItems().length" ng-click="upl.uploader.uploadAll()">
+                                Upload All
+                            </button>
+                        </div>
+                        <div class="panel-block">
+                            <button class="button is-warning is-outlined is-fullwidth" ng-disabled="!upl.uploader.isUploading" ng-click="upl.uploader.cancelAll()">
+                                Cancel All
+                            </button>
+                        </div>
+                        <div class="panel-block">
+                            <button class="button is-danger is-outlined is-fullwidth" ng-disabled="!upl.uploader.queue.length" ng-click="upl.uploader.clearQueue()">
+                                Remove All
+                            </button>
+                        </div>
+
+                        <div class="panel-block" ng-show="upl.uploader.queue.length">
+                            <progress class="progress is-success" value="{{upl.uploader.progress}}" max="100"></progress>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <table class="table is-narrow is-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th ng-show="upl.uploader.isHTML5">Size</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-show="!upl.uploader.queue.length">
+                                <td colspan="100%" class="has-text-centered empty-list">No Items</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!--<div class="columns">-->
+                <!--<div class="column">-->
+                    <!--<table class="table">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                            <!--<th>Name</th>-->
+                            <!--<th ng-show="upl.uploader.isHTML5">Size</th>-->
+                            <!--<th ng-show="upl.uploader.isHTML5">Progress</th>-->
+                            <!--<th>Status</th>-->
+                            <!--<th>Actions</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr ng-repeat="item in upl.uploader.queue">-->
+                            <!--<td><strong>{{ item.file.name }}</strong></td>-->
+                            <!--<td ng-show="upl.uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>-->
+                            <!--<td ng-show="upl.uploader.isHTML5">-->
+                                <!--<progress class="progress is-primary" value="{{item.progress}}" max="100"></progress>-->
+                            <!--</td>-->
+                            <!--<td class="text-center">-->
+                                <!--<span ng-show="item.isSuccess"><i class="fa fa-check" aria-hidden="true"></i></span>-->
+                                <!--<span ng-show="item.isCancel"><i class="fa fa-ban" aria-hidden="true"></i></span>-->
+                                <!--<span ng-show="item.isError"><i class="fa fa-exclamation" aria-hidden="true"></i></span>-->
+                            <!--</td>-->
+                            <!--<td nowrap>-->
+                                <!--<button type="button" class="button is-success is-small" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">-->
+                                    <!--<span class="fa fa-upload" aria-hidden="true"></span>-->
+                                <!--</button>-->
+                                <!--<button type="button" class="button is-warning is-small" ng-click="item.cancel()" ng-disabled="!item.isUploading">-->
+                                    <!--<span class="fa fa-ban" aria-hidden="true"></span>-->
+                                <!--</button>-->
+                                <!--<button type="button" class="button is-danger is-small" ng-click="item.remove()">-->
+                                    <!--<span class="fa fa-trash" aria-hidden="true"></span>-->
+                                <!--</button>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+                    <!--<progress class="progress is-success" value="{{upl.uploader.progress}}" max="100"></progress>-->
+                <!--</div>-->
+                <!--<div class="column is-one-quarter">-->
+                    <!--<p>Bulk Options</p>-->
+
+                    <!--<button class="button is-primary" ng-click="upl.uploader.uploadAll()" ng-disabled="!upl.uploader.getNotUploadedItems().length">-->
+                        <!--<i class="fa fa-upload fa-fw" aria-hidden="true"></i>Upload All-->
+                    <!--</button>-->
+                    <!--<button class="button is-warning" ng-click="upl.uploader.cancelAll()" ng-disabled="!upl.uploader.isUploading">-->
+                        <!--<i class="fa fa-ban fa-fw" aria-hidden="true"></i>Cancel All-->
+                    <!--</button>-->
+                    <!--<button class="button is-danger" ng-click="upl.uploader.clearQueue()" ng-disabled="!upl.uploader.queue.length">-->
+                        <!--<i class="fa fa-trash fa-fw" aria-hidden="true"></i>Remove All-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </section>
+</main>

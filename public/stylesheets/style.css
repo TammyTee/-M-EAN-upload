@@ -1,8 +1,1 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
-
-a {
-  color: #00B7FF; }
-
-/*# sourceMappingURL=style.css.map */
+.button{font-weight:bold}.center-element{margin:0 auto}.empty-list{color:silver}.input-file{width:0.1px;height:0.1px;opacity:0;overflow:hidden;position:absolute;z-index:-1}#file-label{cursor:pointer;width:100%;padding:2em 5em}#file-label:hover{background-color:#eee}

@@ -1,6 +1,9 @@
-# workspace settings
+# Local Development
 .idea
+tmp
 
-# dependencies
+# Node Build Artifacts
 node_modules
+
+# Bower Build Artifacts
 bower_components
