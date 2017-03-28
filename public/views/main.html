@@ -65,8 +65,14 @@
                         </thead>
 
                         <tbody>
-                            <tr ng-show="!upl.uploader.queue.length">
+                            <tr ng-show="!main.items.length">
                                 <td colspan="100%" class="has-text-centered empty-list">No Items</td>
+                            </tr>
+
+                            <tr ng-repeat="item in main.items">
+                                <td>{{item.originalname}}</td>
+                                <td>{{item.size/1024/1024|number:2}} MB</td>
+                                <td>Actions</td>
                             </tr>
                         </tbody>
                     </table>

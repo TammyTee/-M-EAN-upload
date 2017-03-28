@@ -8,9 +8,9 @@
 var app = angular.module('uploadApp.controllers');
 
 app.controller('UploaderController', UploaderController);
-UploaderController.$inject = ['$scope', 'FileUploader'];
+UploaderController.$inject = ['$scope', '$http', 'FileUploader'];
 
-function UploaderController($scope, FileUploader) {
+function UploaderController($scope, $http, FileUploader) {
     var vm   = this,
         main = $scope.main;
 
@@ -19,5 +19,16 @@ function UploaderController($scope, FileUploader) {
         removeAfterUpload: false,
         queueLimit: 5
     });
-    main.progressamt = vm.uploader.progress;
+
+
+    vm.uploader.onCompleteAll = function () {
+        $http({
+            method: 'GET',
+            url:    'http://localhost:3000/api/upload'
+        }).then(function success(res) {
+            main.items = res.data;
+        }, function error(res) {
+            console.error('Error retrieving JSON: ', res.data);
+        });
+    }
 }

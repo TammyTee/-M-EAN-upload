@@ -1,6 +1,7 @@
 # Local Development
 .idea
 tmp
+npm-debug.log
 
 # Node Build Artifacts
 node_modules
