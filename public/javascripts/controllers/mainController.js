@@ -16,7 +16,7 @@ function MainController(ApiService, FileUploader) {
     var vm = this;
 
     vm.uploader = new FileUploader({
-        url: 'http://localhost:3000/api/upload',
+        url: '/api/upload',
         removeAfterUpload: false,
         queueLimit: 3
     });
