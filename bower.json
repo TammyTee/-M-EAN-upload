@@ -1,5 +1,5 @@
 {
-  "name": "fileupload",
+  "name": "mean-upload",
   "description": "Sample M(ySQL)EAN app that allows the user to upload files.",
   "main": "",
   "authors": [
@@ -18,6 +18,7 @@
     "angular": "^1.6.3",
     "angular-route": "^1.6.3",
     "jquery": "^3.2.0",
-    "countUp.js": "^1.8.3"
+    "countUp.js": "^1.8.3",
+    "angularUtils-pagination": "angular-utils-pagination#^0.11.1"
   }
 }

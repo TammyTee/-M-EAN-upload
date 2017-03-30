@@ -5,7 +5,8 @@
 (function(){
     'use strict';
 
-    var app = angular.module('uploadApp', ['uploadApp.controllers', 'ngRoute', 'angularFileUpload']);
+    var app = angular.module('uploadApp', ['uploadApp.controllers', 'uploadApp.services', 'ngRoute',
+        'angularFileUpload', 'angularUtils.directives.dirPagination']);
     
     app.config(function ($routeProvider) {
         $routeProvider

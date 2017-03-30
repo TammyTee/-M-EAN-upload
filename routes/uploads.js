@@ -9,6 +9,7 @@ var multer  = require('multer');
 var path    = require('path');
 var fs      = require('fs');
 var jsonfile= require('jsonfile');
+var uniqid  = require('uniqid');
 
 // multer storage setup
 var storage = multer.diskStorage({
@@ -29,7 +30,7 @@ var upload = multer({
     storage: storage
 }).any('file');
 
-var file = 'data/uploads.json';
+var file    = 'data/uploads.json';
 
 router.get('/', function (req, res){
     //send json response containing uploaded docs data
@@ -56,6 +57,7 @@ router.post('/', function (req, res) {
 
         // obj[key] = req.files[0];
         obj = req.files[0];
+        obj['id'] = uniqid();
 
         // read existing data from file
         jsonfile.readFile(file, function (err, data) {
@@ -84,7 +86,6 @@ router.post('/', function (req, res) {
             }else
                 docs.push(obj);
 
-
             console.log('successful upload: ' + key);
             console.log(docs);
 
@@ -100,6 +101,36 @@ router.post('/', function (req, res) {
     });
 
 });
+
+router.route('/:item_id')
+    .all(function (req, res, next) {
+        item_id = req.params.item_id;
+        next();
+    })
+    .delete(function(req, res){
+        // retrieve saved json data
+        jsonfile.readFile(file, function(err, data){
+            if(err)
+                return res.status(err.statusCode).send(err);
+
+            // remove the item to delete sent in the req from the json data
+            for(var i = 0; i < data.length; i++){
+                if(data[i].originalname === req.body.originalname){
+                    data.splice(i, 1);
+                }
+            }
+
+            // write the updated json data to the uploads.json file
+            jsonfile.writeFile(file, data, function (err) {
+                if(err){
+                    console.error(err);
+                    return res.status(400).send('Update did not write to JSON file');
+                }
+
+                res.send('JSON data file updated.')
+            });
+        });
+    });
 
 module.exports = router;
 
