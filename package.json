@@ -2,6 +2,9 @@
   "name": "mean-upload",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "5.9.1"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "postinstall": "bower install"
@@ -9,6 +12,7 @@
   "dependencies": {
     "angular-file-upload": "^2.5.0",
     "body-parser": "~1.16.0",
+    "bower": "^1.8.0",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.1",
     "debug": "~2.6.0",
