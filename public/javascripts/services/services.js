@@ -23,7 +23,7 @@ function ApiService($http) {
     apiService.getItems = function(){
         return $http({
                     method: 'GET',
-                    url   : 'http://localhost:3000/api/upload'
+                    url   : '/api/upload'
                 }).then(function success(res){
                     items = res.data;
                     addRowNum(items);
@@ -39,7 +39,7 @@ function ApiService($http) {
         // remove item from array and API data file
         return  $http({
                     method: 'DELETE',
-                    url:    'http://localhost:3000/api/upload/' + id,
+                    url:    '/api/upload/' + id,
                     data:    item,
                     headers: { "Content-Type": "application/json;charset=utf-8" }
                 }).then(function success(res){
