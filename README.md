@@ -12,6 +12,7 @@ _(Note: This application is hosted on a free dyno on Heroku. The files uploaded 
 and does not persist between uses of the application.)_
 
 Unit test using Karma/Jasmine were done to demonstrate my knowledge of writing unit test and testing Javascript code.
+
 ![Alt text](/public/images/karma_console.png?raw=true "Karma Console Output")
 
 ### To Dos
