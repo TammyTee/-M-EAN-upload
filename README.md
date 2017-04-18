@@ -27,7 +27,7 @@ Store file information in a mySQL database
 
 + Git
 + Gulp
-+ Browserify
++ Browser-sync
 + Karma/Jasmine
 
 #### Package Managers
