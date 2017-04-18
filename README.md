@@ -16,23 +16,23 @@ Unit test using Karma/Jasmine were done to demonstrate my knowledge of writing u
 
 ![Alt text](/public/images/karma_console.png?raw=true "Karma Console Output")
 
-#### To Dos
+### To Dos
 
 Store file information in a mySQL database
 
-#### Credits
+### Credits
 **Bulma CSS Framework**- https://github.com/jgthms/bulma
 
 **Front-End File Upload**- https://github.com/nervgh/angular-file-upload
 
-#### Dev Tools
+### Dev Tools
 
 + Git
 + Gulp
 + Browser-sync
 + Karma/Jasmine
 
-#### Package Managers
+### Package Managers
 
 + Bower
 + NPM
