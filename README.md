@@ -20,11 +20,6 @@ Unit test using Karma/Jasmine were done to demonstrate my knowledge of writing u
 
 Store file information in a mySQL database
 
-### Credits
-**Bulma CSS Framework**- https://github.com/jgthms/bulma
-
-**Front-End File Upload**- https://github.com/nervgh/angular-file-upload
-
 ### Dev Tools
 
 + Git
